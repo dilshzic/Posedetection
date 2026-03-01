@@ -8,7 +8,7 @@ import com.algorithmx.posedetection.data.LandmarkData
 import com.algorithmx.posedetection.data.PoseEntity
 import com.algorithmx.posedetection.data.PoseRepository
 import com.algorithmx.posedetection.logic.FaceMeshProcessor
-import com.algorithmx.posedetection.logic.ImageCaptioningProcessor
+import com.algorithmx.posedetection.logic.ImageDescriptionProcessor
 import com.algorithmx.posedetection.logic.ImageLabelingProcessor
 import com.algorithmx.posedetection.logic.PoseDetectorProcessor
 import com.algorithmx.posedetection.logic.PoseUtils
@@ -38,7 +38,7 @@ class MainViewModel(private val repository: PoseRepository) : ViewModel() {
     private val poseProcessor = PoseDetectorProcessor()
     private val faceMeshProcessor = FaceMeshProcessor()
     private val labelingProcessor = ImageLabelingProcessor()
-    private val captioningProcessor = ImageCaptioningProcessor()
+    private var descriptionProcessor: ImageDescriptionProcessor? = null
 
     init {
         viewModelScope.launch {
@@ -82,19 +82,24 @@ class MainViewModel(private val repository: PoseRepository) : ViewModel() {
     }
 
     fun onImagesSelected(context: Context, uris: List<Uri>, folderName: String) {
+        if (descriptionProcessor == null) {
+            descriptionProcessor = ImageDescriptionProcessor(context.applicationContext)
+        }
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             uris.forEach { uri ->
                 val poseResult = poseProcessor.detectPose(context, uri)
                 val labels = labelingProcessor.labelImage(context, uri)
-                val caption = captioningProcessor.captionImage(context, uri)
+                
+                // Using Image Describe
+                val description = descriptionProcessor?.describeImage(uri)
                 
                 if (poseResult != null) {
                     val poseEntity = PoseEntity(
                         imagePath = uri.toString(),
                         folderName = folderName,
                         autoLabels = labels,
-                        caption = caption,
+                        caption = description,
                         timestamp = System.currentTimeMillis(),
                         landmarks = poseResult.pose.allPoseLandmarks.map {
                             LandmarkData(it.position3D.x, it.position3D.y, it.position3D.z, it.inFrameLikelihood)
@@ -141,6 +146,11 @@ class MainViewModel(private val repository: PoseRepository) : ViewModel() {
             distribution[label] = distribution.getOrDefault(label, 0) + 1
         }
         return distribution.toList().sortedByDescending { it.second }.toMap()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        descriptionProcessor?.close()
     }
 
     data class PoseDetail(

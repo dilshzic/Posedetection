@@ -14,7 +14,7 @@ mlkit-pose = "17.0.0"
 mlkit-face-mesh = "16.0.0-beta3"
 mlkit-face-detection = "16.1.7"
 mlkit-image-labeling = "17.0.9"
-mlkit-image-captioning = "16.0.0-beta1"
+mlkit-genai-image-description = "1.0.0-beta1"
 ksp = "2.0.21-1.0.26"
 coroutines = "1.9.0"
 lifecycleViewmodelCompose = "2.8.7"
@@ -46,7 +46,7 @@ mlkit-pose-accurate = { group = "com.google.mlkit", name = "pose-detection-accur
 mlkit-face-mesh-detection = { group = "com.google.mlkit", name = "face-mesh-detection", version.ref = "mlkit-face-mesh" }
 mlkit-face-detection = { group = "com.google.mlkit", name = "face-detection", version.ref = "mlkit-face-detection" }
 mlkit-image-labeling = { group = "com.google.mlkit", name = "image-labeling", version.ref = "mlkit-image-labeling" }
-mlkit-image-captioning = { group = "com.google.mlkit", name = "image-captioning", version.ref = "mlkit-image-captioning" }
+mlkit-image-description = { group = "com.google.mlkit", name = "genai-image-description", version.ref = "mlkit-genai-image-description" }
 kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 

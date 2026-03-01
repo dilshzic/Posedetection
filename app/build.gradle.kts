@@ -76,7 +76,7 @@ dependencies {
     implementation(libs.mlkit.face.mesh.detection)
     implementation(libs.mlkit.face.detection)
     implementation(libs.mlkit.image.labeling)
-    implementation(libs.mlkit.image.captioning)
+    implementation(libs.mlkit.image.description)
     implementation(libs.kotlinx.coroutines.play.services)
 
     // Coil
