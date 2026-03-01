@@ -14,6 +14,10 @@ data class LandmarkData(
 data class PoseEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val imagePath: String,
+    val folderName: String = "Default",
+    val label: String? = null,
+    val autoLabels: List<String> = emptyList(),
+    val caption: String? = null,
     val timestamp: Long,
     val landmarks: List<LandmarkData>,
     val imageWidth: Int,
