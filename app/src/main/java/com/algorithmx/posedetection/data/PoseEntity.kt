@@ -1,0 +1,21 @@
+package com.algorithmx.posedetection.data
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+data class LandmarkData(
+    val x: Float,
+    val y: Float,
+    val z: Float,
+    val likelihood: Float
+)
+
+@Entity(tableName = "pose_results")
+data class PoseEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val imagePath: String,
+    val timestamp: Long,
+    val landmarks: List<LandmarkData>,
+    val imageWidth: Int,
+    val imageHeight: Int
+)
