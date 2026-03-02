@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.algorithmx.posedetection"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -49,6 +49,13 @@ android {
             useLegacyPackaging = true
         }
     }
+    
+    // Fix for the misspelled 'Assests' folder
+    sourceSets {
+        getByName("main") {
+            assets.srcDirs("src/main/Assests")
+        }
+    }
 }
 
 dependencies {
@@ -60,6 +67,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.documentfile)
 
@@ -78,6 +86,13 @@ dependencies {
     implementation(libs.mlkit.image.labeling)
     implementation(libs.mlkit.image.description)
     implementation(libs.kotlinx.coroutines.play.services)
+    implementation(libs.kotlinx.coroutines.guava)
+
+    // MediaPipe
+    implementation(libs.mediapipe.tasks.vision)
+
+    // Commons Math
+    implementation(libs.commons.math3)
 
     // Coil
     implementation(libs.coil.compose)

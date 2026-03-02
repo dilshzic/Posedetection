@@ -18,6 +18,9 @@ interface PoseDao {
     @Query("SELECT DISTINCT folderName FROM pose_results")
     fun getUniqueFolders(): Flow<List<String>>
 
+    @Query("SELECT imagePath FROM pose_results WHERE folderName = :folderName")
+    suspend fun getPosePathsInFolder(folderName: String): List<String>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPose(pose: PoseEntity)
 

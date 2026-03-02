@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [PoseEntity::class], version = 1, exportSchema = false)
+@Database(entities = [PoseEntity::class], version = 2, exportSchema = false)
 @TypeConverters(PoseTypeConverters::class)
 abstract class PoseDatabase : RoomDatabase() {
     abstract fun poseDao(): PoseDao
@@ -21,7 +21,9 @@ abstract class PoseDatabase : RoomDatabase() {
                     context.applicationContext,
                     PoseDatabase::class.java,
                     "pose_database"
-                ).build()
+                )
+                .fallbackToDestructiveMigration() // Enforce schema changes
+                .build()
                 INSTANCE = instance
                 instance
             }

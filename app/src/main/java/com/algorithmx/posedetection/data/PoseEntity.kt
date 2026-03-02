@@ -1,6 +1,7 @@
 package com.algorithmx.posedetection.data
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 data class LandmarkData(
@@ -10,7 +11,10 @@ data class LandmarkData(
     val likelihood: Float
 )
 
-@Entity(tableName = "pose_results")
+@Entity(
+    tableName = "pose_results",
+    indices = [Index(value = ["imagePath", "folderName"], unique = true)]
+)
 data class PoseEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val imagePath: String,

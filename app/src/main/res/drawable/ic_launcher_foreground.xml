@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Stylized AI Head/Face Mesh representation -->
+    <!-- Modern Abstract AI/Vision Emblem -->
+    <!-- Hexagonal "Scanning" Frame -->
     <path
-        android:pathData="M54,30m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"
-        android:fillColor="#00E5FF"/> <!-- Cyan for Face Mesh -->
-
-    <!-- Stylized Body/Pose nodes -->
-    <path
-        android:pathData="M54,42 L54,65 L40,85 M54,65 L68,85 M54,48 L35,55 M54,48 L73,55"
+        android:pathData="M54,24 L80,39 L80,69 L54,84 L28,69 L28,39 Z"
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeAlpha="0.4"/>
+
+    <!-- Central Focus Point (Representing Face/Core) -->
+    <path
+        android:pathData="M54,54m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="54"
+                android:centerY="54"
+                android:gradientRadius="6"
+                android:type="radial">
+                <item android:color="#FF00E5FF" android:offset="0" />
+                <item android:color="#FF00B0FF" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Stylized Pose Nodes & Connections -->
+    <path
+        android:pathData="M54,42 L54,54 M54,54 L42,66 M54,54 L66,66"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"/>
 
-    <!-- Glowing Accent Points (Landmarks) -->
+    <!-- Accent "Digital" Bits -->
     <path
-        android:pathData="M40,85m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
-                        M68,85m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
-                        M35,55m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
-                        M73,55m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
-        android:fillColor="#FF4081"/> <!-- Pink accents for Pose landmarks -->
+        android:pathData="M42,66m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
+                        M66,66m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
+                        M54,42m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
+        android:fillColor="#FFFFFFFF"/>
 
-    <!-- Tech circle -->
+    <!-- Glow Effect -->
     <path
-        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"
-        android:strokeColor="#ffffff"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.2"/>
+        android:pathData="M54,54m-15,0a15,15 0,1 1,30 0a15,15 0,1 1,-30 0"
+        android:fillColor="#00E5FF"
+        android:fillAlpha="0.15"/>
+
 </vector>

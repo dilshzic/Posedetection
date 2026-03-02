@@ -10,6 +10,10 @@ class PoseRepository(private val poseDao: PoseDao) {
         return poseDao.getPosesByFolder(folderName)
     }
 
+    suspend fun getPosePathsInFolder(folderName: String): List<String> {
+        return poseDao.getPosePathsInFolder(folderName)
+    }
+
     suspend fun insertPose(pose: PoseEntity) {
         poseDao.insertPose(pose)
     }

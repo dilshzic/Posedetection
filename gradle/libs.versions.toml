@@ -10,7 +10,8 @@ kotlin = "2.0.21"
 composeBom = "2024.12.01"
 room = "2.6.1"
 gson = "2.10.1"
-mlkit-pose = "17.0.0"
+# Aligned ML Kit Versions to prevent NoSuchMethodError
+mlkit-pose = "18.0.0-beta5"
 mlkit-face-mesh = "16.0.0-beta3"
 mlkit-face-detection = "16.1.7"
 mlkit-image-labeling = "17.0.9"
@@ -20,6 +21,9 @@ coroutines = "1.9.0"
 lifecycleViewmodelCompose = "2.8.7"
 coil = "2.7.0"
 documentfile = "1.0.1"
+commons-math3 = "3.6.1"
+kotlinx-coroutines-guava = "1.10.2"
+mediapipe-tasks-vision = "0.10.14"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +40,7 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -48,7 +53,10 @@ mlkit-face-detection = { group = "com.google.mlkit", name = "face-detection", ve
 mlkit-image-labeling = { group = "com.google.mlkit", name = "image-labeling", version.ref = "mlkit-image-labeling" }
 mlkit-image-description = { group = "com.google.mlkit", name = "genai-image-description", version.ref = "mlkit-genai-image-description" }
 kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
+kotlinx-coroutines-guava = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-guava", version.ref = "kotlinx-coroutines-guava" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+commons-math3 = { group = "org.apache.commons", name = "commons-math3", version.ref = "commons-math3" }
+mediapipe-tasks-vision = { group = "com.google.mediapipe", name = "tasks-vision", version.ref = "mediapipe-tasks-vision" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

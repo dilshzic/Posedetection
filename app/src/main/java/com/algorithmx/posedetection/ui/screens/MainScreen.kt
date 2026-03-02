@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,7 +22,7 @@ import com.algorithmx.posedetection.MainViewModel
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
     var currentTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Folders", "Analytics")
+    val tabs = listOf("Folders", "Clusters", "Analytics")
     val selectedDetail by viewModel.selectedPoseDetail.collectAsState()
 
     Scaffold(
@@ -52,7 +53,12 @@ fun MainScreen(viewModel: MainViewModel) {
                             onClick = { currentTab = index },
                             label = { Text(title, fontWeight = FontWeight.Bold) },
                             icon = { 
-                                Icon(if (index == 0) Icons.AutoMirrored.Filled.List else Icons.Default.Info, null) 
+                                val icon = when(index) {
+                                    0 -> Icons.AutoMirrored.Filled.List
+                                    1 -> Icons.Default.AutoAwesome
+                                    else -> Icons.Default.Info
+                                }
+                                Icon(icon, null) 
                             }
                         )
                     }
@@ -64,12 +70,13 @@ fun MainScreen(viewModel: MainViewModel) {
             Brush.verticalGradient(listOf(MaterialTheme.colorScheme.surface, MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f)))
         )) {
             if (selectedDetail != null) {
-                PoseDetailView(selectedDetail!!, onBack = { viewModel.clearSelection() })
+                PoseDetailView(selectedDetail!!, viewModel, onBack = { viewModel.clearSelection() })
             } else {
                 AnimatedContent(targetState = currentTab, label = "tab_transition") { target ->
                     when (target) {
                         0 -> FolderView(viewModel)
-                        1 -> AnalyticsView(viewModel)
+                        1 -> ClustersView(viewModel)
+                        2 -> AnalyticsView(viewModel)
                     }
                 }
             }
